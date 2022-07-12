@@ -59,7 +59,13 @@ class User extends CI_Controller
                 $this->upload->initialize($config);
 
                 if ($this->upload->do_upload('image')) {
-                    $new_image = $this->upload->data('file_name');
+                    $old_image = $data['user']['image'];    /// untuk hapus gambar lama ketika gambar baru di upload
+                    if ($old_image != '1.png') {
+                        unlink(FCPATH . 'assets/img/profile/' . $old_image);
+                    }
+
+
+                    $new_image = $this->upload->data('file_name');     /// untuk upload/ubah gambar profil
                     $this->db->set('image', $new_image);
                 } else {
                     $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">' . $this->upload->display_errors() . '</div>');
