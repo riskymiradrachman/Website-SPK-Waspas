@@ -41,6 +41,33 @@ class User extends CI_Controller
             $name = $this->input->post('name');
             $email = $this->input->post('email');
 
+
+            /// Cek jika ada Gambar yg  Akan di upload
+
+            //$upload_image = $_FILES['image']; ///// buat cek array apakah berhasil atau data masuk
+            // var_dump($upload_image);   ////////buat cek array apakah berhasil atau data masuk
+            // die;
+
+            $upload_image = $_FILES['image']['name'];
+
+            if ($upload_image) {
+                $config['allowed_types'] = 'gif|jpg|png|jpeg';
+                $config['max_size']     = '6144';  /// 6144 = seukuran 6 mb
+                $config['upload_path'] = './assets/img/profile/';
+
+                $this->load->library('upload', $config);
+                $this->upload->initialize($config);
+
+                if ($this->upload->do_upload('image')) {
+                    $new_image = $this->upload->data('file_name');
+                    $this->db->set('image', $new_image);
+                } else {
+                    $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">' . $this->upload->display_errors() . '</div>');
+                    redirect('user');
+                }
+            }
+
+
             $this->db->set('name', $name);
             $this->db->where('email', $email);
             $this->db->update('user');
