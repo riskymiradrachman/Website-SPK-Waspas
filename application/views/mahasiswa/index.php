@@ -119,8 +119,8 @@
                             <input type="text" name="pekerjaan_family" class="form-control" id="pekerjaan_family">
                         </div>
                         <div class="custom-file mb-4">
-                            <label class="custom-file-label" for="sktm">Surat Keterangan Tidak Mampu</label>
                             <input type="file" class="custom-file-input" name="sktm" id="sktm">
+                            <label class="custom-file-label" for="sktm">Surat Keterangan Tidak Mampu</label>
                         </div>
                         <div class="custom-file mb-4">
                             <input type="file" class="custom-file-input" name="sktmb" id="sktmb">
