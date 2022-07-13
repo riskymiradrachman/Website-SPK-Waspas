@@ -1,4 +1,4 @@
-<form action="<?= base_url('mahasiswa/update/' . $mahasiswa[0]['id']); ?>" method="POST">
+<form action="<?= base_url('mahasiswa/edit/' . $mahasiswa[0]['id']); ?>" method="POST">
     <div class="container">
         <h1 class="h3 mb-4 text-gray-800"><?= $title; ?></h1>
         <div class="form-group">
@@ -21,14 +21,39 @@
             <div class="form-group mb-4">
                 <label for="pekerjaan_family">Pekerjaan Orang Tua</label>
                 <input type="text" name="pekerjaan_family" class="form-control" id="pekerjaan_family" value="<?= $mahasiswa[0]['pekerjaan_family'] ?>">
+
             </div>
             <div class="form-group mb-4">
-                <label for="sktm">Surat Keterangan Tidak Mampu</label>
-                <input type="text" name="sktm" class="form-control" id="sktm" value="<?= $mahasiswa[0]['sktm'] ?>">
+                <div class="col-sm-10">
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <img src="<?= base_url('assets/img/sktm/') . $mahasiswa[0]['sktm']; ?>" class="img-thumbnail">
+                        </div>
+                        <div class="col-sm-10">
+                            <div class="col-mb-2">Surat Keterangan Tidak Mampu</div>
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="sktm" name="sktm">
+                                <label class="custom-file-label" for="sktm">Choose file</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="form-group mb-4">
-                <label for="sktmb">Surat Keterangan Tidak Menerima Beasiswa Lain</label>
-                <input type="text" name="sktmb" class="form-control" id="sktmb" value="<?= $mahasiswa[0]['sktmb'] ?>">
+                <div class="col-sm-10">
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <img src="<?= base_url('assets/img/sktmb/') . $mahasiswa[0]['sktmb']; ?>" class="img-thumbnail">
+                        </div>
+                        <div class="col-sm-10">
+                            <div class="col-mb-2">Surat Keterangan Tidak Menerima Beasiswa Lain</div>
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="sktmb" name="sktmb">
+                                <label class="custom-file-label" for="sktmb">Choose file</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="form-group mb-2">
                 <label for="universitas">Universitas</label>
@@ -37,6 +62,6 @@
         </div>
 
         <button type="submit" class="btn btn-primary">Ubah</button>
-
+    </div>
     </div>
 </form>

@@ -14,10 +14,6 @@
                     <label for="nama">Nama Mahasiswa</label>
                     <input type="text" name="name" class="form-control" id="name" value="<?= $user[0]['name'] ?>">
                 </div>
-                <div class="form-group mb-2">
-                    <label for="password">Password</label>
-                    <input type="text" name="password" class="form-control" id="password" value="<?= $user[0]['password'] ?>">
-                </div>
             </div>
 
             <button type="submit" class="btn btn-primary">Ubah</button>

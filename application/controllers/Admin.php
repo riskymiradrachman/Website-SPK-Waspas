@@ -90,7 +90,7 @@ class Admin extends CI_Controller
         $this->db->update('user', [
             'email' => htmlspecialchars($this->input->post('email', 'true')),
             'name' => htmlspecialchars($this->input->post('name', 'true')),
-            'password' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
+            // 'password' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
 
         ]);
 

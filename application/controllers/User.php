@@ -111,27 +111,26 @@ class User extends CI_Controller
                 alert-danger" role="alert">Password Saat Ini Salah !</div>');
 
                 redirect('user/ubahpassword');
+                // } else {
+                //     if ($current_password = $new_password) {
+                //         $this->session->set_flashdata('message', '<div class="alert 
+                //         alert-danger" role="alert">Password Baru tidak boleh sama dengan Password Saat Ini !</div>');
+
+                //         redirect('user/ubahpassword');
             } else {
-                if ($current_password = $new_password) {
-                    $this->session->set_flashdata('message', '<div class="alert 
-                    alert-danger" role="alert">Password Baru tidak boleh sama dengan Password Saat Ini !</div>');
+                /// password sudah ok/benar
 
-                    redirect('user/ubahpassword');
-                } else {
-                    /// password sudah ok/benar
-
-                    $password_hash = password_hash($new_password, PASSWORD_DEFAULT);
+                $password_hash = password_hash($new_password, PASSWORD_DEFAULT);
 
 
-                    $this->db->set('password', $password_hash);
-                    $this->db->where('email', $this->session->userdata('email'));
-                    $this->db->update('user');
+                $this->db->set('password', $password_hash);
+                $this->db->where('email', $this->session->userdata('email'));
+                $this->db->update('user');
 
-                    $this->session->set_flashdata('message', '<div class="alert 
+                $this->session->set_flashdata('message', '<div class="alert 
                     alert-success" role="alert">Password Berhasil Diubah !</div>');
 
-                    redirect('user/ubahpassword');
-                }
+                redirect('user/ubahpassword');
             }
         }
     }

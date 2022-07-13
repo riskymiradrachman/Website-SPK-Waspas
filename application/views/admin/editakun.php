@@ -12,7 +12,7 @@
             <?= $this->session->flashdata('message'); ?>
             <!------------------------------------------ menampilkan pesan error/berhasil di dari 'menu' apabila  isi data------------------------------------------------------>
 
-            <a href="" class="btn btn-primary mb-3" data-toggle="modal" data-target="#newAkunModal">Tambah Akun</a>
+            <!-- <a href="" class="btn btn-primary mb-3" data-toggle="modal" data-target="#newAkunModal">Tambah Akun</a> -->
 
             <table class="table table-hover">
                 <thead>
@@ -20,7 +20,6 @@
                         <th scope="col">No</th>
                         <th scope="col">Email</th>
                         <th scope="col">Nama</th>
-                        <th scope="col">Password</th>
                         <th scope="col">Aksi</th>
                     </tr>
                 </thead>
@@ -37,7 +36,6 @@
                             <!------------------------------------------ menampilkan data menu ------------------------------------------------------>
                             <td><?= $a['email']; ?></td>
                             <td><?= $a['name']; ?></td>
-                            <td><?= $a['password']; ?></td>
                             <!------------------------------------------ menampilkan data menu ------------------------------------------------------>
                             <td>
                                 <a href="<?= base_url(); ?>admin/edit/<?= $a['id']; ?>" class="badge badge-success">Edit</a>
@@ -65,7 +63,7 @@
 <!------------------------------------------------------------------------------------ Modal/pilihan form untuk isi data ------------------------------------------------------------------------------------------>
 
 <!-- Modal -->
-<div class="modal fade" id="newAkunModal" tabindex="-1" role="dialog" aria-labelledby="newAkunModalLabel" aria-hidden="true">
+<!-- <div class="modal fade" id="newAkunModal" tabindex="-1" role="dialog" aria-labelledby="newAkunModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -75,12 +73,11 @@
                 </button>
             </div>
 
-            <!--------------------------------------------------------------------------------------- form tambah data ------------------------------------------------------------------------------------------------>
-            <!----------------------------------------------------- php buat tambah data ---------------------------------------------->
+
             <form class='user' method="POST" action="<?= base_url('admin/editakun'); ?>">
-                <!------------------------------------------------- php buat tambah data ---------------------------------------------->
+
                 <div class="modal-body">
-                    <!-------------------------------------------------------------------- kotak form dari sini ---------------------------------------------->
+
                     <div class="form-group">
                         <input type="text" class="form-control form-control-user" id="name" name="name" placeholder="Masukan nama lengkap" value="<?= set_value('name'); ?>">
                         <?= form_error('name', '<small class="text-danger pl-3">', '</small>'); ?>
@@ -89,16 +86,7 @@
                         <input type="email" class="form-control form-control-user" id="email" name="email" placeholder="Masukan email" value="<?= set_value('email'); ?>">
                         <?= form_error('email', '<small class="text-danger pl-3">', '</small>'); ?>
                     </div>
-                    <div class="form-group row">
-                        <div class="col-sm-6 mb-3 mb-sm-0">
-                            <input type="password" class="form-control form-control-user" id="password1" name="password1" placeholder="Password : minimal 3 karakter">
-                            <?= form_error('password1', '<small class="text-danger pl-3">', '</small>'); ?>
-                        </div>
-                        <div class="col-sm-6">
-                            <input type="password" class="form-control form-control-user" id="password2" name="password2" placeholder="Ulang Password ">
-                        </div>
-                    </div>
-                    <!-------------------------------------------------------------------- kotak form sampai sini -------------------------------------------->
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary btn-user btn-block" data-dismiss="modal">Tutup</button>
@@ -107,7 +95,6 @@
                     </button>
                 </div>
             </form>
-            <!----------------------------------------------------------------------------------------- form tambah data -------------------------------------------------------------------------------------------->
+
         </div>
-    </div>
-</div>
+    </div> -->
