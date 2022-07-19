@@ -20,6 +20,7 @@
                         <th scope="col">No</th>
                         <th scope="col">Email</th>
                         <th scope="col">Nama</th>
+                        <th scope="col">Kriteria</th>
                         <th scope="col">Aksi</th>
                     </tr>
                 </thead>
@@ -36,6 +37,7 @@
                             <!------------------------------------------ menampilkan data menu ------------------------------------------------------>
                             <td><?= $a['email']; ?></td>
                             <td><?= $a['name']; ?></td>
+                            <td><?= $a['role_id']; ?></td>
                             <!------------------------------------------ menampilkan data menu ------------------------------------------------------>
                             <td>
                                 <a href="<?= base_url(); ?>admin/edit/<?= $a['id']; ?>" class="badge badge-success">Edit</a>

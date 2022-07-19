@@ -14,6 +14,10 @@
                     <label for="nama">Nama Mahasiswa</label>
                     <input type="text" name="name" class="form-control" id="name" value="<?= $user[0]['name'] ?>">
                 </div>
+                <div class="form-group mb-2">
+                    <label for="nama">Kriteria</label>
+                    <input type="text" name="role_id" class="form-control" id="role_id" value="<?= $user[0]['role_id'] ?>">
+                </div>
             </div>
 
             <button type="submit" class="btn btn-primary">Ubah</button>
