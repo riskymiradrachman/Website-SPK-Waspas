@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 28 Jun 2022 pada 10.18
+-- Waktu pembuatan: 25 Jul 2022 pada 08.01
 -- Versi server: 10.4.19-MariaDB
 -- Versi PHP: 7.3.28
 
@@ -34,8 +34,8 @@ CREATE TABLE `data_mahasiswa` (
   `ipk` varchar(11) NOT NULL,
   `semester` int(11) NOT NULL,
   `pekerjaan_family` varchar(25) NOT NULL,
-  `sktm` varchar(11) NOT NULL,
-  `sktmb` varchar(11) NOT NULL,
+  `sktm` varchar(255) NOT NULL,
+  `sktmb` varchar(255) NOT NULL,
   `universitas` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -44,8 +44,7 @@ CREATE TABLE `data_mahasiswa` (
 --
 
 INSERT INTO `data_mahasiswa` (`id`, `nim`, `nama`, `ipk`, `semester`, `pekerjaan_family`, `sktm`, `sktmb`, `universitas`) VALUES
-(8, 'E1E118057', 'Muhammad Risky Mirad Rachman', '3.53', 8, 'PNS', 'default.jpg', 'default.jpg', 'Universitas Halu Oleo'),
-(9, 'E1E118010', 'IIN JULIANA BUDIMAN', '3.26', 8, 'WIRASWASTA', 'Yes.jpg', 'No.jpg', 'Universitas Halu Oleo');
+(40, 'E1E118057', 'Muhammad Risky Mirad Rachman', '3.53', 9, 'PNS', 'Uyoo.png', 'logo_genbi_sultra.png', 'Universitas Halu Oleo');
 
 -- --------------------------------------------------------
 
@@ -69,11 +68,10 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `name`, `email`, `image`, `password`, `role_id`, `is_active`, `date_created`) VALUES
-(4, 'Muhammad Risky Mirad ', 'rizkymirad177@gmail.com', '1.jpg', '$2y$10$6tB/zEmMxB3qzf4K/lOyp.KhjWPtOBBpk0AfQDZ8jL0EtcFouEw9a', 2, 1, 1655965191),
-(5, 'Iin Juliana Budiman', 'iinju.budiman@gmail.com', '1.jpg', '$2y$10$n6sBewLbLLuCCzJQU661C.6rThY/.5T5TwqLd2HQSwc1TFn82neHq', 1, 1, 1655965894),
-(6, 'Risky Manguluang', 'risky@gmail.com', '1.jpg', '$2y$10$JvJN0MO8FJ1shLg2hGZFHeKJsX742caHggv23txdlCD1ScqbehOUK', 2, 1, 1655972323),
-(7, 'Rahma Alfarisna', 'rahma@gmail.com', '1.jpg', '$2y$10$6swvVl/KDWNo8E9oHRuty.u/fcgUzrRYyy5Auc.4jL0/QqCAtzx3y', 2, 1, 1655973155),
-(20, 'Alfian Izzah', 'izah@gmail.com', '1.jpg', '$2y$10$u9lgybJ5fBzxZuwmzSEftuAbK5K1SBEbCOW8pi/2Kstcg55se9vcy', 2, 1, 1656353050);
+(4, 'Muhammad Risky Mirad Rachman', 'rizkymirad177@gmail.com', 'WhatsApp_Image_2022-05-26_at_16_48_28.jpeg', '$2y$10$6tB/zEmMxB3qzf4K/lOyp.KhjWPtOBBpk0AfQDZ8jL0EtcFouEw9a', 2, 1, 1655965191),
+(5, 'Iin Juliana Budiman', 'iinju.budiman@gmail.com', 'default.jpg', '$2y$10$xWuosZyn76gIkbz5XXPdJ.31H9Pfqr1SHqJ.UvASD8ALqwGkw5ez2', 1, 1, 1655965894),
+(6, 'Risky Manguluang', 'risky@gmail.com', '1.png', '$2y$10$JvJN0MO8FJ1shLg2hGZFHeKJsX742caHggv23txdlCD1ScqbehOUK', 2, 1, 1655972323),
+(21, 'Angela Stevani', 'angela@gmail.com', '1.png', '$2y$10$KgT/Gukix8nBgM67cnwDAOUU6yVyKf.RNt/aTS8yQlt88xStC0cZ2', 1, 1, 1658132099);
 
 -- --------------------------------------------------------
 
@@ -164,7 +162,8 @@ INSERT INTO `user_sub_menu` (`id`, `menu_id`, `title`, `url`, `icon`, `is_active
 (4, 3, 'Data Mahasiswa', 'Mahasiswa', 'fas fa-fw fa-folder', 1),
 (6, 1, 'Manajemen Akun', 'admin/editakun', 'fas fa-fw fa-user', 1),
 (8, 10, 'Kriteria', 'waspas', 'fas fa-fw fa-tachometer-alt', 1),
-(9, 10, 'Perengkingan Waspas', 'waspas/metode', 'fas fa-fw fa-tachometer-alt', 1);
+(9, 10, 'Perengkingan Waspas', 'waspas/metode', 'fas fa-fw fa-tachometer-alt', 1),
+(10, 2, 'Ubah Password', 'user/ubahpassword', 'fas fa-fw fa-key', 1);
 
 --
 -- Indexes for dumped tables
@@ -214,13 +213,13 @@ ALTER TABLE `user_sub_menu`
 -- AUTO_INCREMENT untuk tabel `data_mahasiswa`
 --
 ALTER TABLE `data_mahasiswa`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT untuk tabel `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT untuk tabel `user_access_menu`
@@ -244,7 +243,7 @@ ALTER TABLE `user_role`
 -- AUTO_INCREMENT untuk tabel `user_sub_menu`
 --
 ALTER TABLE `user_sub_menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

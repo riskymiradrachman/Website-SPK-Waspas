@@ -1,4 +1,4 @@
-<form action="<?= base_url('mahasiswa/edit/' . $mahasiswa[0]['id']); ?>" method="POST">
+<form action="<?= base_url('mahasiswa/edit/' . $mahasiswa[0]['id']); ?>" method="POST" enctype="multipart/form-data">
     <div class="container">
         <h1 class="h3 mb-4 text-gray-800"><?= $title; ?></h1>
         <div class="form-group">
@@ -21,13 +21,12 @@
             <div class="form-group mb-4">
                 <label for="pekerjaan_family">Pekerjaan Orang Tua</label>
                 <input type="text" name="pekerjaan_family" class="form-control" id="pekerjaan_family" value="<?= $mahasiswa[0]['pekerjaan_family'] ?>">
-
             </div>
             <div class="form-group mb-4">
                 <div class="col-sm-10">
                     <div class="row">
                         <div class="col-sm-2">
-                            <img src="<?= base_url('assets/img/sktm/') . $mahasiswa[0]['sktm']; ?>" class="img-thumbnail">
+                            <img src="<?= base_url('assets/img/sktm/') . $mahasiswa[0]['sktm']; ?>" width="100px">
                         </div>
                         <div class="col-sm-10">
                             <div class="col-mb-2">Surat Keterangan Tidak Mampu</div>
@@ -43,7 +42,7 @@
                 <div class="col-sm-10">
                     <div class="row">
                         <div class="col-sm-2">
-                            <img src="<?= base_url('assets/img/sktmb/') . $mahasiswa[0]['sktmb']; ?>" class="img-thumbnail">
+                            <img src="<?= base_url('assets/img/sktmb/') . $mahasiswa[0]['sktmb']; ?>" width="100px">
                         </div>
                         <div class="col-sm-10">
                             <div class="col-mb-2">Surat Keterangan Tidak Menerima Beasiswa Lain</div>

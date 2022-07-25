@@ -12,7 +12,7 @@
             <?= form_error('ipk', '<div class="alert alert-danger" role="alert">', '</div>'); ?>
             <?= form_error('semester', '<div class="alert alert-danger" role="alert">', '</div>'); ?>
             <?= form_error('pekerjaan_family', '<div class="alert alert-danger" role="alert">', '</div>'); ?>
-            <?= form_error('sktb', '<div class="alert alert-danger" role="alert">', '</div>'); ?>
+            <?= form_error('sktm', '<div class="alert alert-danger" role="alert">', '</div>'); ?>
             <?= form_error('sktmb', '<div class="alert alert-danger" role="alert">', '</div>'); ?>
             <?= form_error('universitas', '<div class="alert alert-danger" role="alert">', '</div>'); ?>
 
@@ -30,7 +30,7 @@
                         <th scope="col">IPK</th>
                         <th scope="col">SEMESTER</th>
                         <th scope="col">PEKERJAAN ORANG TUA</th>
-                        <th scope="col">SKTB</th>
+                        <th scope="col">SKTM</th>
                         <th scope="col">SKTMB</th>
                         <th scope="col">UNIVERSITAS</th>
                         <th scope="col">Aksi</th>
@@ -52,12 +52,12 @@
                             <td><?= $m['ipk']; ?></td>
                             <td><?= $m['semester']; ?></td>
                             <td><?= $m['pekerjaan_family']; ?></td>
-                            <td><?= $m['sktm']; ?></td>
-                            <td><?= $m['sktmb']; ?></td>
+                            <td><img src=" <?= base_url('assets/img/sktm/') . $m['sktm']; ?>" width="100px"></td>
+                            <td><img src=" <?= base_url('assets/img/sktmb/') . $m['sktmb']; ?>" width="100px"></td>
                             <td><?= $m['universitas']; ?></td>
                             <!------------------------------------------ menampilkan data menu ------------------------------------------------------>
                             <td>
-                                <a href="<?= base_url(); ?>mahasiswa/edit/<?= $m['id']; ?>" class="badge badge-success">Edit</a>
+                                <a href=" <?= base_url(); ?>mahasiswa/edit/<?= $m['id']; ?>" class="badge badge-success">Edit</a>
                                 <a href="<?= base_url(); ?>mahasiswa/hapus/<?= $m['id']; ?>" class="badge badge-danger float" onclick="return confirm('Yakin Menghapus Data Mahasiswa?'); ">Hapus</a>
                             </td>
                         </tr>
@@ -93,7 +93,9 @@
             </div>
             <!--------------------------------------------------------------------------------------- form tambah data ------------------------------------------------------------------------------------------------>
             <!----------------------------------------------------- php buat tambah data ---------------------------------------------->
-            <form action="<?= base_url('mahasiswa'); ?>" method="POST">
+
+            <!-- kalau upload file harus ada  enctype="multipart/form-data" -->
+            <form action="<?= base_url('mahasiswa'); ?>" method="POST" enctype="multipart/form-data">
                 <!------------------------------------------------- php buat tambah data ---------------------------------------------->
                 <div class="modal-body">
                     <!-------------------------------------------------------------------- kotak form dari sini ---------------------------------------------->
