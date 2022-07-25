@@ -54,6 +54,22 @@
                     </div>
                 </div>
             </div>
+            <div class="form-group mb-4">
+                <div class="col-sm-10">
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <img src="<?= base_url('assets/img/piagam/') . $mahasiswa[0]['piagam']; ?>" width="100px">
+                        </div>
+                        <div class="col-sm-10">
+                            <div class="col-mb-2">Piagam</div>
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="piagam" name="piagam">
+                                <label class="custom-file-label" for="sktmb">Choose file</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="form-group mb-2">
                 <label for="universitas">Universitas</label>
                 <input type="text" name="universitas" class="form-control" id="universitas" value="<?= $mahasiswa[0]['universitas'] ?>">

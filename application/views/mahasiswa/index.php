@@ -14,6 +14,7 @@
             <?= form_error('pekerjaan_family', '<div class="alert alert-danger" role="alert">', '</div>'); ?>
             <?= form_error('sktm', '<div class="alert alert-danger" role="alert">', '</div>'); ?>
             <?= form_error('sktmb', '<div class="alert alert-danger" role="alert">', '</div>'); ?>
+            <?= form_error('piagam', '<div class="alert alert-danger" role="alert">', '</div>'); ?>
             <?= form_error('universitas', '<div class="alert alert-danger" role="alert">', '</div>'); ?>
 
             <?= $this->session->flashdata('message'); ?>
@@ -32,6 +33,7 @@
                         <th scope="col">PEKERJAAN ORANG TUA</th>
                         <th scope="col">SKTM</th>
                         <th scope="col">SKTMB</th>
+                        <th scope="col">PIAGAM</th>
                         <th scope="col">UNIVERSITAS</th>
                         <th scope="col">Aksi</th>
                     </tr>
@@ -54,6 +56,7 @@
                             <td><?= $m['pekerjaan_family']; ?></td>
                             <td><img src=" <?= base_url('assets/img/sktm/') . $m['sktm']; ?>" width="100px"></td>
                             <td><img src=" <?= base_url('assets/img/sktmb/') . $m['sktmb']; ?>" width="100px"></td>
+                            <td><img src=" <?= base_url('assets/img/piagam/') . $m['piagam']; ?>" width="100px"></td>
                             <td><?= $m['universitas']; ?></td>
                             <!------------------------------------------ menampilkan data menu ------------------------------------------------------>
                             <td>
@@ -127,6 +130,10 @@
                         <div class="custom-file mb-4">
                             <input type="file" class="custom-file-input" name="sktmb" id="sktmb">
                             <label class="custom-file-label" for="sktmb">Surat Keterangan Tidak Menerima Beasiswa Lain</label>
+                        </div>
+                        <div class="custom-file mb-4">
+                            <input type="file" class="custom-file-input" name="piagam" id="piagam">
+                            <label class="custom-file-label" for="sktmb">Piagam</label>
                         </div>
                         <div class="form-group mb-2">
                             <label for="universitas">Universitas</label>

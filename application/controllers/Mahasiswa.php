@@ -92,6 +92,32 @@ class Mahasiswa extends CI_Controller
                     redirect('mahasiswa');
                 }
             }
+
+            $upload_piagam = $_FILES['piagam']['name'];
+
+            if ($upload_piagam) {
+                $config['allowed_types'] = 'gif|jpg|png|jpeg';
+                $config['max_size']     = '6144';  /// 6144 = seukuran 6 mb
+                $config['upload_path'] = './assets/img/piagam/';
+
+
+                $this->load->library('upload', $config);
+                $this->upload->initialize($config);
+
+                if ($this->upload->do_upload('piagam')) {
+                    $old_sktm = $data['mahasiswa']['piagam'];    /// untuk hapus gambar lama ketika gambar baru di upload
+                    if ($old_sktm != 'sktmb.jpeg') {
+                        unlink(FCPATH . 'assets/img/piagam/' . $old_sktm);
+                    }
+
+                    $new_image = $this->upload->data('file_name');     /// untuk upload/ubah gambar profil
+                    $this->db->set('piagam', $new_image);
+                } else {
+                    $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">' . $this->upload->display_errors() . '</div>');
+                    redirect('mahasiswa');
+                }
+            }
+
             $this->db->set('nim', $nim);
             $this->db->set('nama', $nama);
             $this->db->set('ipk', $ipk);
@@ -185,6 +211,31 @@ class Mahasiswa extends CI_Controller
                 }
             }
 
+            $upload_piagam = $_FILES['piagam']['name'];
+
+            if ($upload_piagam) {
+                $config['allowed_types'] = 'gif|jpg|png|jpeg';
+                $config['max_size']     = '6144';  /// 6144 = seukuran 6 mb
+                $config['upload_path'] = './assets/img/piagam/';
+
+
+                $this->load->library('upload', $config);
+                $this->upload->initialize($config);
+
+                if ($this->upload->do_upload('piagam')) {
+                    $old_sktm = $data['mahasiswa']['piagam'];    /// untuk hapus gambar lama ketika gambar baru di upload
+                    if ($old_sktm != 'sktmb.jpeg') {
+                        unlink(FCPATH . 'assets/img/piagam/' . $old_sktm);
+                    }
+
+                    $new_image = $this->upload->data('file_name');     /// untuk upload/ubah gambar profil
+                    $this->db->set('piagam', $new_image);
+                } else {
+                    $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">' . $this->upload->display_errors() . '</div>');
+                    redirect('mahasiswa');
+                }
+            }
+
             $this->db->set('nim', $nim);
             $this->db->set('nama', $nama);
             $this->db->set('ipk', $ipk);
@@ -212,6 +263,7 @@ class Mahasiswa extends CI_Controller
 
         unlink(FCPATH . 'assets/img/sktm/' . $mahasiswa['sktm']);
         unlink(FCPATH . 'assets/img/sktmb/' . $mahasiswa['sktmb']);
+        unlink(FCPATH . 'assets/img/piagam/' . $mahasiswa['piagam']);
 
         $this->db->delete('data_mahasiswa');
         $this->session->set_flashdata('message', '<div class="alert 
