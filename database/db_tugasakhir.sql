@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 25 Jul 2022 pada 08.01
+-- Waktu pembuatan: 25 Jul 2022 pada 08.28
 -- Versi server: 10.4.19-MariaDB
 -- Versi PHP: 7.3.28
 
@@ -36,6 +36,7 @@ CREATE TABLE `data_mahasiswa` (
   `pekerjaan_family` varchar(25) NOT NULL,
   `sktm` varchar(255) NOT NULL,
   `sktmb` varchar(255) NOT NULL,
+  `piagam` varchar(255) NOT NULL,
   `universitas` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -43,8 +44,8 @@ CREATE TABLE `data_mahasiswa` (
 -- Dumping data untuk tabel `data_mahasiswa`
 --
 
-INSERT INTO `data_mahasiswa` (`id`, `nim`, `nama`, `ipk`, `semester`, `pekerjaan_family`, `sktm`, `sktmb`, `universitas`) VALUES
-(40, 'E1E118057', 'Muhammad Risky Mirad Rachman', '3.53', 9, 'PNS', 'Uyoo.png', 'logo_genbi_sultra.png', 'Universitas Halu Oleo');
+INSERT INTO `data_mahasiswa` (`id`, `nim`, `nama`, `ipk`, `semester`, `pekerjaan_family`, `sktm`, `sktmb`, `piagam`, `universitas`) VALUES
+(40, 'E1E118057', 'Muhammad Risky Mirad Rachman', '3.53', 9, 'PNS', 'Uyoo.png', 'logo_genbi_sultra.png', 'WhatsApp Image 2022-07-13 at 07.05.24.jpeg', 'Universitas Halu Oleo');
 
 -- --------------------------------------------------------
 
@@ -213,7 +214,7 @@ ALTER TABLE `user_sub_menu`
 -- AUTO_INCREMENT untuk tabel `data_mahasiswa`
 --
 ALTER TABLE `data_mahasiswa`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- AUTO_INCREMENT untuk tabel `user`

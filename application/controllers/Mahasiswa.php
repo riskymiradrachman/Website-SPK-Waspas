@@ -18,10 +18,18 @@ class Mahasiswa extends CI_Controller
 
         $data['nim'] = $this->db->get_where('data_mahasiswa')->result_array();    //menampilkan data user menu di tabel menu manajemen, dengan menggunakan fungsi result_array(); karena data bnyak. kalau misal hnya sebaris saja menggunakan row_array();
         $data['nama'] = $this->db->get_where('data_mahasiswa')->result_array();
-        $mahasiswa = $this->db->get_where('data_mahasiswa')->result_array();
-        $data["mahasiswa"] = $mahasiswa;
+
+        $mahasiswa = $this->db->get_where('data_mahasiswa', ['user_id' => $data['user']['id']])->result_array();
+        if ($data['user']['role_id'] == 1) {
+            $mahasiswa = $this->db->get_where('data_mahasiswa')->result_array();
+        }
+
         // var_dump($this->db->get_where('data_mahasiswa')->result_array());
         // die;
+
+
+
+
         $this->form_validation->set_rules('nim', 'nim', 'required');        // 'menu' disini harus sesuai dengan 'name=menu' di kotak form tambah menu
         $this->form_validation->set_rules('nama', 'nama', 'required');
         $this->form_validation->set_rules('ipk', 'ipk');
@@ -55,10 +63,6 @@ class Mahasiswa extends CI_Controller
                 $this->upload->initialize($config);
 
                 if ($this->upload->do_upload('sktm')) {
-                    $old_sktm = $data['mahasiswa']['sktm'];    /// untuk hapus gambar lama ketika gambar baru di upload
-                    if ($old_sktm != 'sktm.jpeg') {
-                        unlink(FCPATH . 'assets/img/sktm/' . $old_sktm);
-                    }
 
                     $new_image = $this->upload->data('file_name');     /// untuk upload/ubah gambar profil
                     $this->db->set('sktm', $new_image);
@@ -80,10 +84,6 @@ class Mahasiswa extends CI_Controller
                 $this->upload->initialize($config);
 
                 if ($this->upload->do_upload('sktmb')) {
-                    $old_sktm = $data['mahasiswa']['sktmb'];    /// untuk hapus gambar lama ketika gambar baru di upload
-                    if ($old_sktm != 'sktmb.jpeg') {
-                        unlink(FCPATH . 'assets/img/sktmb/' . $old_sktm);
-                    }
 
                     $new_image = $this->upload->data('file_name');     /// untuk upload/ubah gambar profil
                     $this->db->set('sktmb', $new_image);
@@ -105,10 +105,6 @@ class Mahasiswa extends CI_Controller
                 $this->upload->initialize($config);
 
                 if ($this->upload->do_upload('piagam')) {
-                    $old_sktm = $data['mahasiswa']['piagam'];    /// untuk hapus gambar lama ketika gambar baru di upload
-                    if ($old_sktm != 'sktmb.jpeg') {
-                        unlink(FCPATH . 'assets/img/piagam/' . $old_sktm);
-                    }
 
                     $new_image = $this->upload->data('file_name');     /// untuk upload/ubah gambar profil
                     $this->db->set('piagam', $new_image);
@@ -124,6 +120,7 @@ class Mahasiswa extends CI_Controller
             $this->db->set('semester', $semester);
             $this->db->set('pekerjaan_family', $pekerjaan_family);
             $this->db->set('universitas', $universitas);
+            $this->db->set("user_id", $data["user"]["id"]);
             $this->db->insert('data_mahasiswa');
 
 
