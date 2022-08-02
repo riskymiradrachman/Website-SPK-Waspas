@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 25 Jul 2022 pada 08.28
+-- Waktu pembuatan: 02 Agu 2022 pada 19.27
 -- Versi server: 10.4.19-MariaDB
 -- Versi PHP: 7.3.28
 
@@ -37,15 +37,18 @@ CREATE TABLE `data_mahasiswa` (
   `sktm` varchar(255) NOT NULL,
   `sktmb` varchar(255) NOT NULL,
   `piagam` varchar(255) NOT NULL,
-  `universitas` varchar(25) NOT NULL
+  `universitas` varchar(25) NOT NULL,
+  `user_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `data_mahasiswa`
 --
 
-INSERT INTO `data_mahasiswa` (`id`, `nim`, `nama`, `ipk`, `semester`, `pekerjaan_family`, `sktm`, `sktmb`, `piagam`, `universitas`) VALUES
-(40, 'E1E118057', 'Muhammad Risky Mirad Rachman', '3.53', 9, 'PNS', 'Uyoo.png', 'logo_genbi_sultra.png', 'WhatsApp Image 2022-07-13 at 07.05.24.jpeg', 'Universitas Halu Oleo');
+INSERT INTO `data_mahasiswa` (`id`, `nim`, `nama`, `ipk`, `semester`, `pekerjaan_family`, `sktm`, `sktmb`, `piagam`, `universitas`, `user_id`) VALUES
+(1, 'E1E118020', 'Angela Stevanis', '3.60', 8, 'PNS', 'Uyoo.png', 'wallpaperflare_com_wallpaper.jpg', 'WhatsApp_Image_2022-07-13_at_07_05_24.jpeg', 'Universitas Halu Oleo', 2),
+(2, 'E1E118090', 'Muhammad Alfian Izzah', '3.78', 8, 'PNS', '10+_Best_Rick_and_Morty_Wallpapers_HD.png', 'A_Selection_of_Projects.jpg', 'bi-b.png', 'Universitas Halu Oleo', 3),
+(49, 'E1E118090', 'IIN JULIANA B', '3.78', 9, 'PNS', 'WhatsApp_Image_2022-07-13_at_07_05_24.jpeg', 'WhatsApp_Image_2022-06-04_at_18_16_17.jpeg', 'WhatsApp_Image_2022-04-27_at_20_00_55.jpeg', 'Universitas Halu Oleo', 23);
 
 -- --------------------------------------------------------
 
@@ -69,10 +72,11 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `name`, `email`, `image`, `password`, `role_id`, `is_active`, `date_created`) VALUES
-(4, 'Muhammad Risky Mirad Rachman', 'rizkymirad177@gmail.com', 'WhatsApp_Image_2022-05-26_at_16_48_28.jpeg', '$2y$10$6tB/zEmMxB3qzf4K/lOyp.KhjWPtOBBpk0AfQDZ8jL0EtcFouEw9a', 2, 1, 1655965191),
-(5, 'Iin Juliana Budiman', 'iinju.budiman@gmail.com', 'default.jpg', '$2y$10$xWuosZyn76gIkbz5XXPdJ.31H9Pfqr1SHqJ.UvASD8ALqwGkw5ez2', 1, 1, 1655965894),
-(6, 'Risky Manguluang', 'risky@gmail.com', '1.png', '$2y$10$JvJN0MO8FJ1shLg2hGZFHeKJsX742caHggv23txdlCD1ScqbehOUK', 2, 1, 1655972323),
-(21, 'Angela Stevani', 'angela@gmail.com', '1.png', '$2y$10$KgT/Gukix8nBgM67cnwDAOUU6yVyKf.RNt/aTS8yQlt88xStC0cZ2', 1, 1, 1658132099);
+(1, 'Iin Juliana Budiman', 'iinju.budiman@gmail.com', 'WhatsApp_Image_2022-05-26_at_16_48_281.jpeg', '$2y$10$xWuosZyn76gIkbz5XXPdJ.31H9Pfqr1SHqJ.UvASD8ALqwGkw5ez2', 1, 1, 1655965894),
+(2, 'Angela Stevani', 'angela@gmail.com', '1.png', '$2y$10$KgT/Gukix8nBgM67cnwDAOUU6yVyKf.RNt/aTS8yQlt88xStC0cZ2', 2, 1, 1658132099),
+(3, 'Muhammad Alfian Izzah', 'alfian@gmail.com', 'Live_gift.png', '$2y$10$XOP0dNv386Umrng/3k08M.jx2.5Ca0K/rKm4PBiqJAbs.9VZ4JboS', 2, 1, 1659196131),
+(23, 'Iinju Budiman', 'iinju.foto123@gmail.com', 'default.jpg', '$2y$10$clTcOjHfWPbfSARaQv0zF.FhtitzKrvTj9sIrvUAu8Qg5NrVSU94u', 2, 1, 1659460715),
+(24, 'Iinju Budiman', 'iinju.foto123@gmail.com', 'default.jpg', '$2y$10$clTcOjHfWPbfSARaQv0zF.FhtitzKrvTj9sIrvUAu8Qg5NrVSU94u', 2, 1, 1659460715);
 
 -- --------------------------------------------------------
 
@@ -95,7 +99,8 @@ INSERT INTO `user_access_menu` (`id`, `role_id`, `menu_id`) VALUES
 (2, 1, 2),
 (3, 2, 2),
 (4, 1, 3),
-(6, 1, 10);
+(6, 1, 10),
+(7, 2, 3);
 
 -- --------------------------------------------------------
 
@@ -166,6 +171,27 @@ INSERT INTO `user_sub_menu` (`id`, `menu_id`, `title`, `url`, `icon`, `is_active
 (9, 10, 'Perengkingan Waspas', 'waspas/metode', 'fas fa-fw fa-tachometer-alt', 1),
 (10, 2, 'Ubah Password', 'user/ubahpassword', 'fas fa-fw fa-key', 1);
 
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `user_token`
+--
+
+CREATE TABLE `user_token` (
+  `id` int(11) NOT NULL,
+  `email` varchar(128) NOT NULL,
+  `token` varchar(128) NOT NULL,
+  `date_created` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `user_token`
+--
+
+INSERT INTO `user_token` (`id`, `email`, `token`, `date_created`) VALUES
+(2, 'iinju.foto123@gmail.com', 'TMLHi2aK2jE5jjOe+DCtAtj2B4jzPoiRcpUr28c288E=', 1659460933),
+(3, 'iinju.foto123@gmail.com', 'shVdLlZQmhA2iZePI/+z1HRsMpPwpRULFCCjxAcivaQ=', 1659461056);
+
 --
 -- Indexes for dumped tables
 --
@@ -174,7 +200,8 @@ INSERT INTO `user_sub_menu` (`id`, `menu_id`, `title`, `url`, `icon`, `is_active
 -- Indeks untuk tabel `data_mahasiswa`
 --
 ALTER TABLE `data_mahasiswa`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_user_id` (`user_id`);
 
 --
 -- Indeks untuk tabel `user`
@@ -207,6 +234,12 @@ ALTER TABLE `user_sub_menu`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indeks untuk tabel `user_token`
+--
+ALTER TABLE `user_token`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
@@ -214,19 +247,19 @@ ALTER TABLE `user_sub_menu`
 -- AUTO_INCREMENT untuk tabel `data_mahasiswa`
 --
 ALTER TABLE `data_mahasiswa`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- AUTO_INCREMENT untuk tabel `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT untuk tabel `user_access_menu`
 --
 ALTER TABLE `user_access_menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT untuk tabel `user_menu`
@@ -245,6 +278,22 @@ ALTER TABLE `user_role`
 --
 ALTER TABLE `user_sub_menu`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT untuk tabel `user_token`
+--
+ALTER TABLE `user_token`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
+--
+
+--
+-- Ketidakleluasaan untuk tabel `data_mahasiswa`
+--
+ALTER TABLE `data_mahasiswa`
+  ADD CONSTRAINT `fk_user_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
